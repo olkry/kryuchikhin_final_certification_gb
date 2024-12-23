@@ -16,7 +16,8 @@ class UserRegisterForm(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'password', 'password2']
 
-    # Проверка совпадения паролей
+
+
     def clean_password2(self):
         password1 = self.cleaned_data.get("password")
         password2 = self.cleaned_data.get("password2")

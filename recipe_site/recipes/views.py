@@ -14,7 +14,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')  # После регистрации перенаправляем на страницу входа
+            return redirect('login')
     else:
         form = UserRegisterForm()
     return render(request, 'recipes/register.html', {'form': form})
@@ -29,7 +29,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')  # Перенаправляем на главную страницу
+                return redirect('home')
             else:
                 form.add_error(None, "Неверные учетные данные")
     else:
@@ -40,7 +40,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')  # После выхода перенаправляем на главную
+    return redirect('home')
 
 
 def recipe_form(request, id=None):
@@ -53,7 +53,7 @@ def recipe_form(request, id=None):
         form = RecipeForm(request.POST, instance=recipe)
         if form.is_valid():
             form.save()
-            return redirect('home')  # После сохранения рецепта перенаправляем на главную
+            return redirect('home')
     else:
         form = RecipeForm(instance=recipe)
 
